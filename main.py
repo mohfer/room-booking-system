@@ -352,7 +352,7 @@ def ubah_peminjaman():
     conn = sqlite3.connect("kampus.db")
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM peminjaman WHERE id = ?", (idp,))
+    cursor.execute("SELECT * FROM peminjaman WHERE id = ? AND status = ?", (idp, 'aktif'))
     data = cursor.fetchone()
     if not data:
         print("ID peminjaman tidak ditemukan.")
@@ -396,7 +396,7 @@ def selesaikan_peminjaman():
     conn = sqlite3.connect("kampus.db")
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM peminjaman WHERE id = ?", (idp,))
+    cursor.execute("SELECT * FROM peminjaman WHERE id = ? AND status = ?", (idp, 'aktif'))
     data = cursor.fetchone()
 
     if data:
